@@ -1,111 +1,72 @@
-# Mascota Rescate
+# Mascota Rescate - Plataforma de Adopción de Mascotas
 
-Una aplicación web para la adopción de mascotas, desarrollada con Django.
+Una aplicación web desarrollada con Django para facilitar la adopción de mascotas y ayudar a animales necesitados a encontrar un hogar amoroso.
 
 ## Características
 
 - Registro y autenticación de usuarios
+- Perfiles de usuario personalizables
 - Listado de mascotas disponibles para adopción
-- Panel de administración para gestionar mascotas
-- Carga y gestión de imágenes de mascotas
-- Interfaz responsive y moderna
+- Detalles completos de cada mascota
+- Formulario para agregar nuevas mascotas
+- Sección "Cómo Ayudar" con información sobre donaciones y voluntariado
+- Interfaz intuitiva y fácil de usar
 
-## Requisitos
+## Tecnologías Utilizadas
 
-- Python 3.8 o superior
-- PostgreSQL (producción)
-- Pip (gestor de paquetes de Python)
+- Python 3.10
+- Django 4.2
+- SQLite3
+- HTML5
+- CSS3
+- Bootstrap 5
 
 ## Instalación Local
 
 1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/JuliAlvarez-P/ProyectoFinal.git
-   cd ProyectoFinal
-   ```
+```bash
+git clone https://github.com/JuliAlvarez-P/ProyectoFinal.git
+cd ProyectoFinal
+```
 
 2. Crear y activar entorno virtual:
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate  # Windows
-   ```
+```bash
+python -m venv venv
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
+```
 
 3. Instalar dependencias:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-4. Configurar variables de entorno:
-   - Crear archivo `.env` en la raíz del proyecto
-   - Copiar contenido de `.env.example`
-   - Actualizar valores según necesidad
-
-5. Aplicar migraciones:
-   ```bash
-   python manage.py migrate
-   ```
-
-6. Crear superusuario:
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-7. Ejecutar servidor de desarrollo:
-   ```bash
-   python manage.py runserver
-   ```
-
-## Despliegue en Heroku
-
-1. Crear nueva aplicación en Heroku
-
-2. Configurar variables de entorno en Heroku:
-   - DJANGO_SECRET_KEY
-   - DJANGO_DEBUG
-   - DJANGO_ALLOWED_HOSTS
-   - DATABASE_URL
-
-3. Conectar repositorio y desplegar:
-   ```bash
-   heroku git:remote -a nombre-de-tu-app
-   git push heroku main
-   ```
-
-4. Aplicar migraciones:
-   ```bash
-   heroku run python manage.py migrate
-   ```
+4. Realizar migraciones:
+```bash
+cd project_files/mascota_rescate_core
+python manage.py migrate
+```
 
 5. Crear superusuario:
-   ```bash
-   heroku run python manage.py createsuperuser
-   ```
+```bash
+python manage.py createsuperuser
+```
 
-## Mantenimiento
+6. Iniciar servidor de desarrollo:
+```bash
+python manage.py runserver
+```
 
-- Actualizar dependencias:
-  ```bash
-  pip install -r requirements.txt
-  ```
+## Despliegue en PythonAnywhere
 
-- Aplicar migraciones pendientes:
-  ```bash
-  python manage.py migrate
-  ```
+La aplicación está desplegada en PythonAnywhere y puede accederse en:
+[http://Juli0406.pythonanywhere.com](http://Juli0406.pythonanywhere.com)
 
-- Recolectar archivos estáticos:
-  ```bash
-  python manage.py collectstatic
-  ```
+## Contribuciones
 
-## Contribuir
+Las contribuciones son bienvenidas. Por favor, abre un issue primero para discutir los cambios que te gustaría realizar.
 
-1. Fork el repositorio
-2. Crear rama para nueva característica
-3. Commit cambios
-4. Push a la rama
-5. Crear Pull Request
+## Autor
 
-## Licencia
-
-Este proyecto está bajo la Licencia MIT.
+- Julieta Alvarez
+- Contacto: julieta2000facultad@gmail.com
