@@ -20,8 +20,8 @@ Una aplicación web para la adopción de mascotas, desarrollada con Django.
 
 1. Clonar el repositorio:
    ```bash
-   git clone <url-del-repositorio>
-   cd trabajo-final
+   git clone https://github.com/JuliAlvarez-P/ProyectoFinal.git
+   cd ProyectoFinal
    ```
 
 2. Crear y activar entorno virtual:
