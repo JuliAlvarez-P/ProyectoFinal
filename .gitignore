@@ -43,3 +43,8 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Keep these directories
+!project_files/
+!project_files/mascota_rescate_core/
+!project_files/mascota_rescate_core/**/
