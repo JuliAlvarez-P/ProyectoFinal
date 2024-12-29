@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .logo {
+      fill: none;
+      stroke: #2c3e50;
+      stroke-width: 20;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .dot {
+      fill: #2c3e50;
+    }
+  </style>
+  
+  <!-- Main circle -->
+  <circle class="logo" cx="250" cy="250" r="200"/>
+  
+  <!-- Dog -->
+  <path class="logo" d="M150 180 Q 200 150 220 200 Q 240 250 280 250"/>
+  <circle class="dot" cx="150" cy="160" r="8"/>
+  
+  <!-- Cat -->
+  <path class="logo" d="M300 200 Q 320 180 350 180"/>
+  <path class="logo" d="M350 180 L 350 280"/>
+  <circle class="dot" cx="350" cy="160" r="8"/>
+  
+  <!-- Dot -->
+  <circle class="dot" cx="380" cy="320" r="8"/>
+</svg>

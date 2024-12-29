@@ -1,0 +1,81 @@
+{% extends 'adopcion/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header" style="background: linear-gradient(135deg, var(--turquoise), var(--lilac)); color: white;">
+                    <h3 class="mb-0">
+                        <i class="fas fa-edit me-2"></i>Editar {{ mascota.nombre }}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Información básica -->
+                        <h4 class="mb-4" style="color: var(--turquoise);">Información básica</h4>
+                        {% for field in form %}
+                            <div class="mb-3">
+                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <!-- Gestión de imágenes -->
+                        <h4 class="mt-5 mb-4" style="color: var(--turquoise);">Gestión de imágenes</h4>
+                        
+                        <!-- Imágenes actuales -->
+                        {% if imagenes %}
+                            <div class="row mb-4">
+                                {% for imagen in imagenes %}
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img src="{{ imagen.imagen.url }}" class="card-img-top" alt="Imagen de {{ mascota.nombre }}" style="height: 200px; object-fit: cover;">
+                                            <div class="card-body">
+                                                <div class="form-check mb-2">
+                                                    <input type="radio" name="imagen_principal" value="{{ imagen.id }}" class="form-check-input" {% if imagen.es_principal %}checked{% endif %}>
+                                                    <label class="form-check-label">Imagen principal</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="eliminar_imagen" value="{{ imagen.id }}" class="form-check-input">
+                                                    <label class="form-check-label text-danger">Eliminar imagen</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted">No hay imágenes cargadas</p>
+                        {% endif %}
+
+                        <!-- Subir nuevas imágenes -->
+                        <div class="mb-4">
+                            <label class="form-label">Agregar nuevas imágenes</label>
+                            {{ imagen_form.imagen }}
+                            <small class="form-text text-muted">Puedes seleccionar múltiples imágenes</small>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, var(--turquoise), var(--lilac)); border: none;">
+                                <i class="fas fa-save me-2"></i>Guardar cambios
+                            </button>
+                            <a href="{% url 'lista_mascotas' %}" class="btn btn-outline-secondary ms-2">
+                                <i class="fas fa-times me-2"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

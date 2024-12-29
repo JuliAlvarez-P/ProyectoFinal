@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio</title>
+    <style>
+        body {
+            background-image: url('/static/img/perro.jpg');
+            background-size: cover;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Rescate de Mascotas</h1>
+    <a href="{% url 'registro' %}">Registrar</a>
+    <a href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a>
+    <a href="{% url 'lista_mascotas' %}">Ver Mascotas</a>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mascota Rescate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {% load static %}
+    <style>
+        :root {
+            --turquoise: #40E0D0;
+            --turquoise-light: #B4F0EC;
+            --turquoise-dark: #20B2AA;
+            --lilac: #B784B7;
+            --lilac-light: #D8B4D8;
+            --lilac-dark: #9B4F96;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+            transition: transform 0.3s ease;
+            margin-right: 12px;
+        }
+        
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(120deg, var(--turquoise-dark) 55%, var(--lilac-dark) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline-primary {
+            color: var(--turquoise-dark);
+            border-color: var(--turquoise);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Card Styles */
+        .card {
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card-header {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem 1rem;
+        }
+
+        /* Badge Styles */
+        .badge {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            color: white;
+            padding: 0.5em 1em;
+        }
+
+        /* Section Styles */
+        .section-gradient {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            color: white;
+        }
+
+        .section-light {
+            background: linear-gradient(120deg, var(--turquoise-light) 55%, var(--lilac-light) 100%);
+            opacity: 0.8;
+        }
+
+        /* Form Styles */
+        .form-control:focus {
+            border-color: var(--turquoise);
+            box-shadow: 0 0 0 0.2rem rgba(64, 224, 208, 0.25);
+        }
+
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Alert Styles */
+        .alert-success {
+            background: linear-gradient(120deg, var(--turquoise-light) 55%, var(--lilac-light) 100%);
+            border: none;
+            color: var(--turquoise-dark);
+        }
+
+        .alert-danger {
+            background: linear-gradient(120deg, #FFE4E1 55%, #FFC0CB 100%);
+            border: none;
+            color: #D63384;
+        }
+
+        /* Icon Styles */
+        .icon-gradient {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Pagination Styles */
+        .page-link {
+            color: var(--turquoise-dark);
+        }
+
+        .page-link:hover {
+            color: var(--turquoise);
+            background-color: var(--turquoise-light);
+            border-color: var(--turquoise);
+        }
+
+        .page-item.active .page-link {
+            background: linear-gradient(120deg, var(--turquoise) 55%, var(--lilac) 100%);
+            border-color: transparent;
+        }
+
+        /* Link Styles */
+        a {
+            color: var(--turquoise-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--lilac-dark);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
+                <img src="{% static 'img/logo_duo.svg' %}" alt="Mascota Rescate Logo" class="me-2">
+                <span class="text-white">Mascota Rescate</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'lista_mascotas' %}">Mascotas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'como_ayudar' %}">Cómo Ayudar</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'perfil' %}">
+                                <i class="fas fa-user me-1"></i>Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cerrar_sesion' %}">
+                                <i class="fas fa-sign-out-alt me-1"></i>Cerrar Sesión
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'iniciar_sesion' %}">
+                                <i class="fas fa-sign-in-alt me-1"></i>Iniciar Sesión
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'registro' %}">
+                                <i class="fas fa-user-plus me-1"></i>Registro
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Mascotas Rescate</h5>
+                    <p>Ayudando a encontrar hogares amorosos para mascotas necesitadas.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'inicio' %}" class="text-white">Inicio</a></li>
+                        <li><a href="{% url 'lista_mascotas' %}" class="text-white">Mascotas</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-envelope me-2"></i>info@mascotasrescate.com</p>
+                    <p><i class="fas fa-phone me-2"></i>(123) 456-7890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

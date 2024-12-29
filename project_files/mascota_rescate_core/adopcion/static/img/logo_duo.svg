@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="50" viewBox="0 0 160 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Dog Silhouette -->
+    <path d="M40 42c-4 0-7-3-7-7V20c0-3 3-6 6-6h6c3 0 5 2 6 4l3 5v12c0 4-3 7-7 7h-7z" fill="var(--lilac, #B784B7)"/>
+    <circle cx="45" cy="14" r="3" fill="var(--lilac, #B784B7)"/> <!-- Dog ear -->
+    <circle cx="52" cy="14" r="3" fill="var(--lilac, #B784B7)"/> <!-- Dog ear -->
+    <circle cx="42" cy="24" r="2" fill="white"/> <!-- Dog eye -->
+    <circle cx="50" cy="24" r="2" fill="white"/> <!-- Dog eye -->
+    <path d="M43 30c2 2 4 2 6 0" stroke="white" stroke-width="1.5" fill="none"/> <!-- Dog smile -->
+    
+    <!-- Cat Silhouette -->
+    <path d="M80 42c-4 0-7-3-7-7V20c0-3 3-6 6-6h6c3 0 6 3 6 6v15c0 4-3 7-7 7h-4z" fill="var(--turquoise, #40E0D0)"/>
+    <path d="M73 20l7-12 7 12" fill="var(--turquoise, #40E0D0)"/> <!-- Cat ears -->
+    <circle cx="77" cy="24" r="2" fill="white"/> <!-- Cat eye -->
+    <circle cx="85" cy="24" r="2" fill="white"/> <!-- Cat eye -->
+    <path d="M79 29l4 2" stroke="white" stroke-width="1.5"/> <!-- Cat whisker -->
+    <path d="M79 31l4 0" stroke="white" stroke-width="1.5"/> <!-- Cat whisker -->
+    <path d="M79 33l4 -2" stroke="white" stroke-width="1.5"/> <!-- Cat whisker -->
+</svg>

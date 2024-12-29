@@ -1,0 +1,74 @@
+{% extends 'adopcion/base.html' %}
+
+{% block content %}
+<div class="section-gradient py-5">
+    <div class="container">
+        <h1 class="text-center text-white mb-5">Cómo Ayudar</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 hover-lift">
+                <div class="card-body text-center">
+                    <i class="fas fa-home fa-3x mb-3 icon-gradient"></i>
+                    <h3 class="card-title" style="color: var(--lilac);">Hogar Temporal</h3>
+                    <p class="card-text text-muted">Ofrece tu hogar como refugio temporal para mascotas que esperan ser adoptadas.</p>
+                    <a href="#" class="btn btn-primary mt-3">Más Información</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 hover-lift">
+                <div class="card-body text-center">
+                    <i class="fas fa-hand-holding-heart fa-3x mb-3 icon-gradient"></i>
+                    <h3 class="card-title" style="color: var(--lilac);">Donaciones</h3>
+                    <p class="card-text text-muted">Ayuda con alimentos, medicinas o elementos necesarios para el cuidado de las mascotas.</p>
+                    <a href="#" class="btn btn-primary mt-3">Donar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 hover-lift">
+                <div class="card-body text-center">
+                    <i class="fas fa-hands-helping fa-3x mb-3 icon-gradient"></i>
+                    <h3 class="card-title" style="color: var(--lilac);">Voluntariado</h3>
+                    <p class="card-text text-muted">Únete a nuestro equipo de voluntarios y ayuda en diferentes actividades.</p>
+                    <a href="#" class="btn btn-primary mt-3">Ser Voluntario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card section-light p-4">
+                <h3 class="text-center mb-4" style="color: var(--lilac);">Otras Formas de Ayudar</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-share-alt fa-2x me-3" style="color: var(--turquoise);"></i>
+                            <div>
+                                <h5 style="color: var(--lilac);">Comparte en Redes Sociales</h5>
+                                <p class="text-muted">Ayuda a difundir nuestras mascotas en adopción.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="fas fa-camera fa-2x me-3" style="color: var(--turquoise);"></i>
+                            <div>
+                                <h5 style="color: var(--lilac);">Sesiones Fotográficas</h5>
+                                <p class="text-muted">Ayuda a tomar fotos de nuestras mascotas para su difusión.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
