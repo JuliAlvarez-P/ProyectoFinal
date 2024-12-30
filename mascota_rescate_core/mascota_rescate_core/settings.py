@@ -117,11 +117,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Auth settings
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-# Authentication settings
+# Authentication URLs and redirects
 LOGIN_URL = 'accounts:login'  # Use namespaced URL pattern
 LOGIN_REDIRECT_URL = 'adopcion:inicio'  # Redirect to home page after login
 LOGOUT_REDIRECT_URL = 'adopcion:inicio'  # Redirect to home page after logout
 
+# Authentication backends
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -155,7 +156,7 @@ CSRF_COOKIE_SECURE = False  # Set to True only if using HTTPS
 CSRF_COOKIE_HTTPONLY = False
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:8000', 'https://Juli0406.pythonanywhere.com']
 
-# Messages
+# Message tags for Bootstrap alerts
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',

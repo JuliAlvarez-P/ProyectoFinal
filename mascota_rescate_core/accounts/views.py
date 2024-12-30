@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LoginView
 
 class CustomLoginView(LoginView):
@@ -15,7 +15,7 @@ class CustomLoginView(LoginView):
         next_url = self.request.GET.get('next') or self.request.POST.get('next')
         if next_url:
             return next_url
-        return reverse_lazy('adopcion:inicio')
+        return reverse('adopcion:inicio')
     
     def form_invalid(self, form):
         messages.error(self.request, _('Por favor verifica tu usuario y contraseña.'))
