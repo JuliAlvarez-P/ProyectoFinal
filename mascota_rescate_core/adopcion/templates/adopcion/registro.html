@@ -1,0 +1,143 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="register-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="form-card p-4 bg-white rounded-4 shadow-sm" data-aos="fade-up">
+                    <h1 class="h3 mb-4 text-center">Crear Cuenta</h1>
+                    
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                            {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <!-- Username -->
+                        <div class="form-floating mb-3">
+                            {{ form.username }}
+                            <label for="{{ form.username.id_for_label }}">Nombre de usuario</label>
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-floating mb-3">
+                            {{ form.email }}
+                            <label for="{{ form.email.id_for_label }}">Correo electrónico</label>
+                            {% if form.email.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- First Name -->
+                        <div class="form-floating mb-3">
+                            {{ form.first_name }}
+                            <label for="{{ form.first_name.id_for_label }}">Nombre</label>
+                            {% if form.first_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.first_name.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="form-floating mb-3">
+                            {{ form.last_name }}
+                            <label for="{{ form.last_name.id_for_label }}">Apellido</label>
+                            {% if form.last_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.last_name.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-floating mb-3">
+                            {{ form.password1 }}
+                            <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+                            {% if form.password1.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password1.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <div class="form-text">
+                                <small>La contraseña debe tener al menos 8 caracteres y no puede ser demasiado común.</small>
+                            </div>
+                        </div>
+
+                        <!-- Password Confirmation -->
+                        <div class="form-floating mb-3">
+                            {{ form.password2 }}
+                            <label for="{{ form.password2.id_for_label }}">Confirmar contraseña</label>
+                            {% if form.password2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password2.errors %}
+                                {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Registrarse
+                            </button>
+                            <p class="text-center mt-3">
+                                ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Iniciar sesión</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .register-section {
+        background-color: var(--bs-light);
+        min-height: 100vh;
+    }
+
+    .form-card {
+        transition: all 0.3s ease;
+    }
+
+    .form-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .form-floating > .form-control {
+        height: calc(3.5rem + 2px);
+        line-height: 1.25;
+    }
+
+    .form-floating > label {
+        padding: 1rem 0.75rem;
+    }
+</style>
+{% endblock %}

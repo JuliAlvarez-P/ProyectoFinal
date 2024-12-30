@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle -->
+    <circle cx="30" cy="30" r="28" fill="#F8F9FA" stroke="#40E0D0" stroke-width="2"/>
+    
+    <!-- Dog silhouette -->
+    <path d="M20 35c-3-8-5-15-3-20s6-8 13-8 11 3 13 8 0 12-3 20c-2 5-4 8-10 8s-8-3-10-8z" 
+          fill="#B19CD9" stroke="#2C3E50" stroke-width="1.5"/>
+    <circle cx="25" cy="22" r="2" fill="#2C3E50"/> <!-- Left eye -->
+    <circle cx="35" cy="22" r="2" fill="#2C3E50"/> <!-- Right eye -->
+    <path d="M30 26l-2 2 2 2 2-2z" fill="#2C3E50"/> <!-- Nose -->
+    <path d="M15 15c-2-5-5-7-5-7s0 4-1 7m20-7c2-5 5-7 5-7s0 4 1 7" 
+          stroke="#2C3E50" stroke-width="1.5" stroke-linecap="round"/> <!-- Ears -->
+    
+    <!-- Cat silhouette -->
+    <g transform="translate(60, 0)">
+        <circle cx="30" cy="30" r="28" fill="#F8F9FA" stroke="#B19CD9" stroke-width="2"/>
+        <path d="M20 38c-2-6-3-12-1-17s6-8 11-8 9 3 11 8-1 11-3 17c-1 4-3 7-8 7s-9-3-10-7z" 
+              fill="#40E0D0" stroke="#2C3E50" stroke-width="1.5"/>
+        <circle cx="25" cy="25" r="2" fill="#2C3E50"/> <!-- Left eye -->
+        <circle cx="35" cy="25" r="2" fill="#2C3E50"/> <!-- Right eye -->
+        <path d="M30 29l-1.5 1.5 1.5 1.5 1.5-1.5z" fill="#2C3E50"/> <!-- Nose -->
+        <path d="M18 15l-6-8 2 8m20-8l6-8-2 8" fill="#40E0D0" stroke="#2C3E50" stroke-width="1.5"/> <!-- Ears -->
+        <path d="M24 28l-4-2m16 2l4-2" stroke="#2C3E50" stroke-width="1" stroke-linecap="round"/> <!-- Whiskers -->
+    </g>
+    
+    <!-- Text -->
+    <g transform="translate(120, 0)">
+        <text x="0" y="35" font-family="Arial" font-weight="bold" font-size="24" fill="#2C3E50">
+            Mascota
+        </text>
+        <text x="0" y="52" font-family="Arial" font-size="14" fill="#666">
+            Rescate
+        </text>
+    </g>
+    
+    <!-- Paw prints decoration -->
+    <g transform="translate(200, 15)" fill="#40E0D0" opacity="0.5">
+        <circle cx="0" cy="0" r="2"/>
+        <circle cx="4" cy="-2" r="2"/>
+        <circle cx="4" cy="2" r="2"/>
+        <circle cx="8" cy="0" r="2"/>
+    </g>
+    <g transform="translate(220, 35)" fill="#B19CD9" opacity="0.5">
+        <circle cx="0" cy="0" r="2"/>
+        <circle cx="4" cy="-2" r="2"/>
+        <circle cx="4" cy="2" r="2"/>
+        <circle cx="8" cy="0" r="2"/>
+    </g>
+</svg>

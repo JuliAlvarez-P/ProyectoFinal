@@ -1,0 +1,112 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- User Profile -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-circle fa-5x mb-3 text-muted"></i>
+                    <h4>{{ user.get_full_name }}</h4>
+                    <p class="text-muted">{{ user.email }}</p>
+                    <a href="{% url 'publicar_mascota' %}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Publicar Mascota
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mascotas y Solicitudes -->
+        <div class="col-md-8">
+            <!-- Mascotas Publicadas -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Mis Mascotas Publicadas</h5>
+                </div>
+                <div class="card-body">
+                    {% if mascotas_publicadas %}
+                        <div class="row">
+                            {% for mascota in mascotas_publicadas %}
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    {% if mascota.imagen %}
+                                        <img src="{{ mascota.imagen.url }}" class="card-img-top" alt="{{ mascota.nombre }}" style="height: 200px; object-fit: cover;">
+                                    {% else %}
+                                        <div class="text-center p-4 bg-light">
+                                            <i class="fas fa-paw fa-3x text-muted"></i>
+                                        </div>
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ mascota.nombre }}</h5>
+                                        <p class="card-text text-muted">
+                                            <small>Publicado: {{ mascota.fecha_publicacion|date:"d/m/Y" }}</small>
+                                        </p>
+                                        <a href="{% url 'detalle_mascota' mascota.id %}" class="btn btn-outline-primary btn-sm">
+                                            Ver Detalles
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-center text-muted my-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Aún no has publicado ninguna mascota
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Solicitudes de Adopción -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Mis Solicitudes de Adopción</h5>
+                </div>
+                <div class="card-body">
+                    {% if solicitudes %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Mascota</th>
+                                        <th>Fecha</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for solicitud in solicitudes %}
+                                    <tr>
+                                        <td>{{ solicitud.mascota.nombre }}</td>
+                                        <td>{{ solicitud.fecha_solicitud|date:"d/m/Y" }}</td>
+                                        <td>{{ solicitud.get_estado_display }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <p class="text-center text-muted my-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            No tienes solicitudes de adopción
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card-header {
+        background-color: white;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+</style>
+{% endblock %}

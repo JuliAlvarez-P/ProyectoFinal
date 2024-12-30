@@ -1,0 +1,144 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="login-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="login-card" data-aos="fade-up">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-paw fa-3x text-primary mb-3"></i>
+                        <h2 class="fw-bold">¡Bienvenido de nuevo!</h2>
+                        <p class="text-muted">Inicia sesión para continuar</p>
+                    </div>
+
+                    <form method="post" class="login-form">
+                        {% csrf_token %}
+                        
+                        {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Usuario o contraseña incorrectos
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endif %}
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">
+                                <i class="fas fa-user me-2"></i>Usuario
+                            </label>
+                            <input type="text" name="username" class="form-control" required 
+                                   placeholder="Ingresa tu nombre de usuario">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">
+                                <i class="fas fa-lock me-2"></i>Contraseña
+                            </label>
+                            <div class="input-group">
+                                <input type="password" name="password" class="form-control" required 
+                                       placeholder="Ingresa tu contraseña" id="password-input">
+                                <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted mb-0">¿No tienes una cuenta?</p>
+                            <a href="{% url 'registro' %}" class="text-primary">Regístrate aquí</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .login-section {
+        min-height: calc(100vh - 200px);
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--turquoise-light) 0%, var(--lilac-light) 100%);
+    }
+
+    .login-card {
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .login-form .form-control {
+        border-radius: 10px;
+        padding: 0.8rem 1rem;
+        border: 1px solid #dee2e6;
+        transition: all 0.3s ease;
+    }
+
+    .login-form .form-control:focus {
+        border-color: var(--turquoise);
+        box-shadow: 0 0 0 0.25rem rgba(64, 224, 208, 0.25);
+    }
+
+    .login-form .input-group .btn {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .login-form .form-label {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn-primary {
+        padding: 1rem;
+        border-radius: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .text-primary {
+        color: var(--turquoise) !important;
+    }
+
+    @media (max-width: 768px) {
+        .login-card {
+            padding: 2rem;
+            margin: 1rem;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const togglePassword = document.querySelector('#toggle-password');
+    const passwordInput = document.querySelector('#password-input');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // Toggle icon
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+    });
+});
+</script>
+{% endblock %}

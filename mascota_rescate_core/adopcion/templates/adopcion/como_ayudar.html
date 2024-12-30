@@ -1,0 +1,230 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-4">¿Cómo puedes ayudar?</h1>
+            <p class="lead">Hay muchas formas de contribuir a nuestra causa y ayudar a los animales necesitados.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Ways to Help Section -->
+<section class="ways-to-help-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Adopción -->
+            <div class="col-md-6 col-lg-4">
+                <div class="help-card">
+                    <div class="help-icon mb-4">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Adopta</h3>
+                    <p class="text-muted mb-4">Dale un hogar amoroso a una mascota necesitada. La adopción salva vidas y crea lazos increíbles.</p>
+                    <a href="{% url 'adopcion:lista_mascotas' %}" class="btn btn-primary">
+                        <i class="fas fa-paw me-2"></i>Ver Mascotas
+                    </a>
+                </div>
+            </div>
+
+            <!-- Donaciones -->
+            <div class="col-md-6 col-lg-4">
+                <div class="help-card">
+                    <div class="help-icon mb-4">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Dona</h3>
+                    <p class="text-muted mb-4">Tus donaciones nos ayudan a proporcionar alimento, atención veterinaria y refugio a nuestros animales.</p>
+                    <a href="#donar" class="btn btn-primary">
+                        <i class="fas fa-heart me-2"></i>Donar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Voluntariado -->
+            <div class="col-md-6 col-lg-4">
+                <div class="help-card">
+                    <div class="help-icon mb-4">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Voluntariado</h3>
+                    <p class="text-muted mb-4">Únete a nuestro equipo de voluntarios y ayuda directamente en el cuidado y bienestar de los animales.</p>
+                    <a href="#voluntariado" class="btn btn-primary">
+                        <i class="fas fa-users me-2"></i>Ser Voluntario
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Donation Section -->
+<section id="donar" class="donation-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-4">Tu donación hace la diferencia</h2>
+                <p class="lead mb-4">Cada peso cuenta. Tu apoyo nos ayuda a:</p>
+                <ul class="donation-list mb-4">
+                    <li><i class="fas fa-check-circle me-2"></i>Proporcionar alimentos y refugio</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Cubrir gastos veterinarios</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Realizar rescates y rehabilitación</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Mantener nuestras instalaciones</li>
+                </ul>
+                <div class="donation-options">
+                    <h4 class="mb-3">Métodos de donación:</h4>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-university me-2"></i>Transferencia Bancaria</h5>
+                            <p class="card-text">
+                                Banco: Ejemplo<br>
+                                Cuenta: 1234-5678-9012<br>
+                                CBU: 0000000000000000000000
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-money-bill-wave me-2"></i>Otras Opciones</h5>
+                            <p class="card-text">
+                                Mercado Pago<br>
+                                PayPal<br>
+                                Efectivo en nuestras instalaciones
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'adopcion/img/donation.jpg' %}" alt="Donación" class="img-fluid rounded-3 shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Section -->
+<section id="voluntariado" class="volunteer-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <h2 class="display-5 fw-bold mb-4">Sé parte de nuestro equipo</h2>
+                <p class="lead mb-4">Como voluntario, podrás:</p>
+                <ul class="volunteer-list mb-4">
+                    <li><i class="fas fa-check-circle me-2"></i>Ayudar en el cuidado diario de las mascotas</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Participar en eventos de adopción</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Colaborar en campañas de concientización</li>
+                    <li><i class="fas fa-check-circle me-2"></i>Asistir en tareas administrativas</li>
+                </ul>
+                <a href="#contacto" class="btn btn-lg btn-primary">
+                    <i class="fas fa-paper-plane me-2"></i>Postularme
+                </a>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <img src="{% static 'adopcion/img/volunteer.jpg' %}" alt="Voluntariado" class="img-fluid rounded-3 shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, var(--turquoise-light), var(--lilac-light));
+        padding: 100px 0;
+        margin-top: -20px;
+    }
+
+    .help-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .help-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .help-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, var(--turquoise-light), var(--lilac-light));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .help-icon i {
+        font-size: 2.5rem;
+        color: var(--turquoise);
+    }
+
+    .donation-list, .volunteer-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .donation-list li, .volunteer-list li {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: #444;
+    }
+
+    .donation-list i, .volunteer-list i {
+        color: var(--turquoise);
+    }
+
+    .donation-options .card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .donation-options .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--turquoise), var(--lilac));
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(64, 224, 208, 0.3);
+    }
+
+    img {
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    img:hover {
+        transform: scale(1.02);
+    }
+
+    @media (max-width: 991.98px) {
+        .hero-section {
+            padding: 60px 0;
+        }
+        
+        .col-lg-6 {
+            margin-bottom: 2rem;
+        }
+    }
+</style>
+{% endblock %}

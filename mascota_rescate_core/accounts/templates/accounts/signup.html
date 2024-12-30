@@ -1,0 +1,133 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <h2 class="display-6">Únete a Mascota Rescate</h2>
+                        <p class="text-muted">Crea tu cuenta y comienza a ayudar a mascotas necesitadas</p>
+                    </div>
+
+                    <form method="post" novalidate class="signup-form">
+                        {% csrf_token %}
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.first_name.id_for_label }}" class="form-label">Nombre</label>
+                                {{ form.first_name }}
+                                {{ form.first_name.errors }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="{{ form.last_name.id_for_label }}" class="form-label">Apellido</label>
+                                {{ form.last_name }}
+                                {{ form.last_name.errors }}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">Nombre de Usuario</label>
+                            {{ form.username }}
+                            {{ form.username.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label">Correo Electrónico</label>
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">Contraseña</label>
+                            {{ form.password1 }}
+                            {% if form.password1.help_text %}
+                            <div class="form-text text-muted small">
+                                {{ form.password1.help_text|safe }}
+                            </div>
+                            {% endif %}
+                            {{ form.password1.errors }}
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">Confirmar Contraseña</label>
+                            {{ form.password2 }}
+                            {{ form.password2.errors }}
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Crear Cuenta
+                            </button>
+                            <p class="text-center mt-3">
+                                ¿Ya tienes una cuenta? 
+                                <a href="{% url 'accounts:login' %}" class="text-decoration-none">Inicia Sesión</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .signup-form .form-control {
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+    }
+
+    .signup-form .form-control:focus {
+        border-color: var(--turquoise);
+        box-shadow: 0 0 0 0.25rem rgba(64, 224, 208, 0.25);
+    }
+
+    .signup-form .btn-primary {
+        background: linear-gradient(135deg, var(--turquoise), var(--lilac));
+        border: none;
+        border-radius: 10px;
+        padding: 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .signup-form .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(64, 224, 208, 0.3);
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #444;
+        margin-bottom: 0.5rem;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+    }
+
+    .form-text {
+        font-size: 0.875rem;
+    }
+
+    .form-text ul {
+        padding-left: 1.2rem;
+        margin-top: 0.5rem;
+    }
+</style>
+{% endblock %}

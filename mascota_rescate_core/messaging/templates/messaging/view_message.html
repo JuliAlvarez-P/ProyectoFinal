@@ -1,0 +1,91 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <div class="message-header mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2 class="mb-0">
+                                <i class="fas fa-envelope me-2"></i>Mensaje
+                            </h2>
+                            <span class="badge {% if message.is_read %}bg-success{% else %}bg-primary{% endif %}">
+                                {% if message.is_read %}Leído{% else %}No leído{% endif %}
+                            </span>
+                        </div>
+                        <hr>
+                        <div class="message-meta">
+                            <p class="mb-1">
+                                <strong>De:</strong> {{ message.sender.username }}
+                            </p>
+                            <p class="mb-1">
+                                <strong>Para:</strong> {{ message.receiver.username }}
+                            </p>
+                            <p class="mb-0">
+                                <strong>Fecha:</strong> {{ message.timestamp|date:"d/m/Y H:i" }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="message-content mb-4">
+                        <div class="content-box">
+                            {{ message.content|linebreaks }}
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        {% if message.sender != user %}
+                        <a href="{% url 'send_message' message.sender.id %}" class="btn btn-primary">
+                            <i class="fas fa-reply me-2"></i>Responder
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'inbox' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Volver al Buzón
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+        border: none;
+    }
+
+    .card-body {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(64, 224, 208, 0.1) 100%
+        );
+    }
+
+    .message-meta {
+        padding: 1rem;
+        background-color: rgba(64, 224, 208, 0.1);
+        border-radius: 8px;
+    }
+
+    .content-box {
+        padding: 1.5rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .badge {
+        padding: 0.5em 1em;
+        border-radius: 20px;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+    }
+</style>
+{% endblock %}

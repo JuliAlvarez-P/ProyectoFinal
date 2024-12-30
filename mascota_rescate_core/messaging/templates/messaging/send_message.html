@@ -1,0 +1,73 @@
+{% extends 'adopcion/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                    </h2>
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label class="form-label">Para:</label>
+                            <div class="form-control-static">{{ receiver.username }}</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="content" class="form-label">Mensaje:</label>
+                            <textarea name="content" id="content" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                            </button>
+                            <a href="{% url 'inbox' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Volver al Buzón
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+        border: none;
+    }
+
+    .card-body {
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(64, 224, 208, 0.1) 100%
+        );
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+    }
+
+    .form-control:focus {
+        border-color: var(--turquoise);
+        box-shadow: 0 0 0 0.25rem rgba(64, 224, 208, 0.25);
+    }
+
+    .form-control-static {
+        padding: 0.75rem 1rem;
+        background-color: rgba(64, 224, 208, 0.1);
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    .btn {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+    }
+</style>
+{% endblock %}
