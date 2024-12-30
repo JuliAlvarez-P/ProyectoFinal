@@ -21,6 +21,14 @@ class CustomLoginView(LoginView):
         messages.error(self.request, _('Por favor verifica tu usuario y contraseña.'))
         return super().form_invalid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = _('Iniciar Sesión')
+        next_url = self.request.GET.get('next')
+        if next_url:
+            context['next'] = next_url
+        return context
+
 def registro(request):
     """View for user registration."""
     if request.user.is_authenticated:
