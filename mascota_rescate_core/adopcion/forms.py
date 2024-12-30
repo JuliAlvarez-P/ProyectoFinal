@@ -18,9 +18,42 @@ class MascotaForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+            # Add placeholder text
+            field.widget.attrs['placeholder'] = field.label
         
         # Add help text for image field
         self.fields['foto'].help_text = _('Formatos permitidos: JPG, PNG. Tamaño máximo: 5MB')
+        self.fields['foto'].widget.attrs['accept'] = 'image/*'
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        if foto:
+            # Check file size
+            if foto.size > 5 * 1024 * 1024:  # 5MB
+                raise forms.ValidationError(_('El tamaño del archivo no debe exceder 5MB'))
+            
+            # Check file type
+            allowed_types = ['image/jpeg', 'image/png']
+            if foto.content_type not in allowed_types:
+                raise forms.ValidationError(_('Solo se permiten archivos JPG y PNG'))
+        return foto
+
+    def clean_edad(self):
+        edad = self.cleaned_data.get('edad')
+        if edad and edad < 0:
+            raise forms.ValidationError(_('La edad no puede ser negativa'))
+        if edad and edad > 30:
+            raise forms.ValidationError(_('Por favor verifique la edad ingresada'))
+        return edad
+
+    def clean_nombre(self):
+        nombre = self.cleaned_data.get('nombre')
+        if nombre:
+            # Remove extra spaces
+            nombre = ' '.join(nombre.split())
+            # Capitalize first letter
+            nombre = nombre.capitalize()
+        return nombre
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(

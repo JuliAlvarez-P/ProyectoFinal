@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext_lazy as _
 from .models import Mascota, SolicitudAdopcion
 from .forms import MascotaForm, SolicitudAdopcionForm
+from django.conf import settings
 
 def inicio(request):
     """Vista de la página de inicio."""
@@ -39,18 +40,25 @@ def publicar_mascota(request):
     if request.method == 'POST':
         form = MascotaForm(request.POST, request.FILES)
         if form.is_valid():
-            mascota = form.save(commit=False)
-            mascota.usuario = request.user
-            mascota.save()
-            messages.success(request, _('Mascota publicada exitosamente'))
-            return redirect('adopcion:lista_mascotas')
+            try:
+                mascota = form.save(commit=False)
+                mascota.usuario = request.user
+                mascota.save()
+                messages.success(request, _('Mascota publicada exitosamente'))
+                return redirect('adopcion:lista_mascotas')
+            except Exception as e:
+                messages.error(request, _('Error al guardar la mascota: {}').format(str(e)))
+        else:
+            messages.error(request, _('Por favor corrija los errores en el formulario'))
     else:
         form = MascotaForm()
     
-    return render(request, 'adopcion/publicar_mascota.html', {
+    context = {
         'form': form,
-        'title': _('Publicar Mascota')
-    })
+        'title': _('Publicar Mascota'),
+        'debug': settings.DEBUG
+    }
+    return render(request, 'adopcion/publicar_mascota.html', context)
 
 @login_required
 def editar_mascota(request, pk):
