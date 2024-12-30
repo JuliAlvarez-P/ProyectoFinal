@@ -116,9 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Auth settings
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Authentication settings
+LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'adopcion:inicio'
 LOGOUT_REDIRECT_URL = 'adopcion:inicio'
-LOGIN_URL = 'accounts:login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
