@@ -9,6 +9,13 @@
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Iniciar Sesión</h2>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
                     {% if form.errors %}
                     <div class="alert alert-danger">
                         <strong>Error:</strong> Por favor verifica tu usuario y contraseña.
@@ -16,7 +23,9 @@
                     {% endif %}
                     <form method="post" action="{% url 'accounts:login' %}" novalidate>
                         {% csrf_token %}
+                        {% if next %}
                         <input type="hidden" name="next" value="{{ next }}">
+                        {% endif %}
                         {% for field in form %}
                         <div class="mb-3">
                             <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
