@@ -12,10 +12,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Add the project directory to the Python path
+project_dir = str(BASE_DIR)
+if project_dir not in sys.path:
+    sys.path.insert(0, project_dir)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -24,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)9&4qi*nu&3p2%@%qqk)fk#pg@@q##v!uw47oa8^3t7r)u)ayi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['Juli0406.pythonanywhere.com']  # Replace 'yourusername' with your PythonAnywhere username
+ALLOWED_HOSTS = ['Juli0406.pythonanywhere.com', 'localhost', '127.0.0.1']  # Replace 'yourusername' with your PythonAnywhere username
 
 
 # Application definition
