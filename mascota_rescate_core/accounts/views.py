@@ -4,6 +4,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from .forms import CustomUserCreationForm, CustomUserChangeForm
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView
+
+class CustomLoginView(LoginView):
+    template_name = 'accounts/login.html'
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('adopcion:inicio')
+    
+    def form_invalid(self, form):
+        messages.error(self.request, _('Por favor verifica tu usuario y contraseña.'))
+        return super().form_invalid(form)
 
 def registro(request):
     """View for user registration."""

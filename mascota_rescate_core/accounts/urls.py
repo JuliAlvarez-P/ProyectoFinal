@@ -6,10 +6,7 @@ app_name = 'accounts'
 
 urlpatterns = [
     path('registro/', views.registro, name='registro'),
-    path('login/', auth_views.LoginView.as_view(
-        template_name='accounts/login.html',
-        redirect_authenticated_user=True
-    ), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='adopcion:inicio'), name='logout'),
     path('perfil/', views.perfil, name='perfil'),
 ]

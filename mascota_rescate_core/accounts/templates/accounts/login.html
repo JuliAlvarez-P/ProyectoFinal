@@ -1,5 +1,6 @@
 {% extends 'adopcion/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 <div class="container py-5">
@@ -8,15 +9,25 @@
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <h2 class="text-center mb-4">Iniciar Sesión</h2>
-                    <form method="post" novalidate>
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> Por favor verifica tu usuario y contraseña.
+                    </div>
+                    {% endif %}
+                    <form method="post" action="{% url 'accounts:login' %}" novalidate>
                         {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
                         {% for field in form %}
                         <div class="mb-3">
                             <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                            {{ field.errors }}
-                            {{ field }}
+                            {{ field|add_class:"form-control" }}
                             {% if field.help_text %}
                             <small class="form-text text-muted">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% if field.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ field.errors|join:", " }}
+                            </div>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -34,33 +45,4 @@
         </div>
     </div>
 </div>
-
-<style>
-    .form-control {
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-    }
-
-    .form-control:focus {
-        border-color: var(--turquoise);
-        box-shadow: 0 0 0 0.25rem rgba(64, 224, 208, 0.25);
-    }
-
-    .btn-primary {
-        border-radius: 8px;
-        padding: 0.75rem 1rem;
-    }
-
-    .card {
-        border-radius: 15px;
-        border: none;
-    }
-
-    .card-body {
-        background: linear-gradient(135deg,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(147, 112, 219, 0.1) 100%
-        );
-    }
-</style>
 {% endblock %}

@@ -116,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Auth settings
 AUTH_USER_MODEL = 'accounts.CustomUser'
-LOGIN_REDIRECT_URL = 'inicio'
-LOGOUT_REDIRECT_URL = 'inicio'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'adopcion:inicio'
+LOGOUT_REDIRECT_URL = 'adopcion:inicio'
+LOGIN_URL = 'accounts:login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -147,6 +147,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'adopcion', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# CSRF settings
+CSRF_COOKIE_SECURE = False  # Set to True only if using HTTPS
+CSRF_COOKIE_HTTPONLY = False
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000', 'http://localhost:8000', 'https://Juli0406.pythonanywhere.com']
 
 # Messages
 from django.contrib.messages import constants as messages
